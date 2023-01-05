@@ -1,15 +1,18 @@
 using System;
 using System.Media;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
+using System.Xml.Serialization;
 
 namespace TimmerApp
 {
     public partial class Form1 : Form
     {
         private string? AppLocationSettingsFile = "Settings.txt";
-        private string? AppLocationAppsToStartFolder = "ShortcutsFolder";
+        private string? AppsToStart = "ShortcutsFolder";
         private bool IsTickingTime = false;
-        private TimeSpan MaxElapsedTime = new(0, 00, 20);
+        private string[]? ShortcutsDetected;
+        private TimeSpan MaxElapsedTime = new(9, 59, 59);
         private TimeSpan ElapsedTime = new(0, 00, 00);
 
         //---------------------Settings-----------------//
@@ -20,10 +23,12 @@ namespace TimmerApp
         public Form1()
         {
             InitializeComponent();
-            GetSettings();
-
             //temp
             AllocConsole();
+
+            GetSettings();
+            StartShorcuts();
+            ForceStart();
         }
 
         //temp
@@ -81,9 +86,9 @@ namespace TimmerApp
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
-            if (!Directory.Exists(AppLocationAppsToStartFolder))
+            if (!Directory.Exists(AppsToStart))
             {
-                Directory.CreateDirectory(AppLocationAppsToStartFolder);
+                Directory.CreateDirectory(AppsToStart);
             }
 
             if (Directory.Exists(AppLocationSettingsFile))
@@ -145,6 +150,12 @@ namespace TimmerApp
                 Stw.WriteLine($"Start alarm when on target time = {IsAlarmActive}");
             }
         }
+        private void ForceStart()
+        {
+            ToggleTimmer_B.Text = "Stop";
+            IsTickingTime = true;
+            TickTime();
+        }
         private void ForceStop()
         {
             IsTickingTime = false;
@@ -152,6 +163,20 @@ namespace TimmerApp
             ToggleTimmer_B.Text = "Start";
             TimerNumbr_L.Text = "0:00:00";
 
+        }
+        private void StartShorcuts()
+        {
+            ShortcutsDetected = Directory.GetFiles(AppsToStart);
+            foreach(string directory in ShortcutsDetected)
+            {
+                Console.WriteLine(directory);
+                var p = new Process();
+                p.StartInfo = new ProcessStartInfo(directory)
+                {
+                    UseShellExecute = true
+                };
+                p.Start();
+            }
         }
     }
 }
