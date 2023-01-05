@@ -35,6 +35,7 @@
             this.OpenAppsAtStartup_Check = new System.Windows.Forms.CheckBox();
             this.Settings_FlowP = new System.Windows.Forms.FlowLayoutPanel();
             this.StartAlarm_Check = new System.Windows.Forms.CheckBox();
+            this.AutoStartTimmer_Check = new System.Windows.Forms.CheckBox();
             this.AlarmTime_L = new System.Windows.Forms.Label();
             this.AlarmTargetM_T = new System.Windows.Forms.TextBox();
             this.AlarmTargetS_T = new System.Windows.Forms.TextBox();
@@ -47,13 +48,13 @@
             // TimerNumbr_L
             // 
             this.TimerNumbr_L.AutoSize = true;
-            this.TimerNumbr_L.Font = new System.Drawing.Font("Segoe UI", 37F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TimerNumbr_L.Font = new System.Drawing.Font("Segoe UI", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TimerNumbr_L.Location = new System.Drawing.Point(15, 10);
             this.TimerNumbr_L.Margin = new System.Windows.Forms.Padding(0);
             this.TimerNumbr_L.Name = "TimerNumbr_L";
-            this.TimerNumbr_L.Size = new System.Drawing.Size(186, 67);
+            this.TimerNumbr_L.Size = new System.Drawing.Size(197, 62);
             this.TimerNumbr_L.TabIndex = 0;
-            this.TimerNumbr_L.Text = "0:00:00";
+            this.TimerNumbr_L.Text = "00:00:00";
             // 
             // TimeElapsed_FlowP
             // 
@@ -66,7 +67,7 @@
             this.TimeElapsed_FlowP.Location = new System.Drawing.Point(12, 12);
             this.TimeElapsed_FlowP.Name = "TimeElapsed_FlowP";
             this.TimeElapsed_FlowP.Padding = new System.Windows.Forms.Padding(15, 10, 0, 0);
-            this.TimeElapsed_FlowP.Size = new System.Drawing.Size(218, 78);
+            this.TimeElapsed_FlowP.Size = new System.Drawing.Size(218, 97);
             this.TimeElapsed_FlowP.TabIndex = 2;
             // 
             // ToggleTimmer_B
@@ -85,11 +86,11 @@
             // 
             this.AlarmTargetH_T.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AlarmTargetH_T.Location = new System.Drawing.Point(25, 121);
-            this.AlarmTargetH_T.MaxLength = 1;
+            this.AlarmTargetH_T.MaxLength = 2;
             this.AlarmTargetH_T.Name = "AlarmTargetH_T";
             this.AlarmTargetH_T.Size = new System.Drawing.Size(22, 25);
             this.AlarmTargetH_T.TabIndex = 4;
-            this.AlarmTargetH_T.Text = "0";
+            this.AlarmTargetH_T.Text = "00";
             this.AlarmTargetH_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.AlarmTargetH_T.TextChanged += new System.EventHandler(this.UpdateTimeSettings);
             // 
@@ -114,11 +115,12 @@
             this.Settings_FlowP.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Settings_FlowP.Controls.Add(this.OpenAppsAtStartup_Check);
             this.Settings_FlowP.Controls.Add(this.StartAlarm_Check);
+            this.Settings_FlowP.Controls.Add(this.AutoStartTimmer_Check);
             this.Settings_FlowP.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.Settings_FlowP.Location = new System.Drawing.Point(17, 157);
             this.Settings_FlowP.Name = "Settings_FlowP";
             this.Settings_FlowP.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.Settings_FlowP.Size = new System.Drawing.Size(210, 100);
+            this.Settings_FlowP.Size = new System.Drawing.Size(210, 113);
             this.Settings_FlowP.TabIndex = 8;
             // 
             // StartAlarm_Check
@@ -132,10 +134,24 @@
             this.StartAlarm_Check.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.StartAlarm_Check.Size = new System.Drawing.Size(206, 30);
             this.StartAlarm_Check.TabIndex = 8;
-            this.StartAlarm_Check.Text = "Start Alarm";
+            this.StartAlarm_Check.Text = "Use Alarm Sound";
             this.StartAlarm_Check.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.StartAlarm_Check.UseVisualStyleBackColor = false;
             this.StartAlarm_Check.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxsesSettings);
+            // 
+            // AutoStartTimmer_Check
+            // 
+            this.AutoStartTimmer_Check.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.AutoStartTimmer_Check.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AutoStartTimmer_Check.Location = new System.Drawing.Point(1, 75);
+            this.AutoStartTimmer_Check.Name = "AutoStartTimmer_Check";
+            this.AutoStartTimmer_Check.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.AutoStartTimmer_Check.Size = new System.Drawing.Size(206, 30);
+            this.AutoStartTimmer_Check.TabIndex = 9;
+            this.AutoStartTimmer_Check.Text = "Auto Start Timmer";
+            this.AutoStartTimmer_Check.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AutoStartTimmer_Check.UseVisualStyleBackColor = false;
+            this.AutoStartTimmer_Check.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxsesSettings);
             // 
             // AlarmTime_L
             // 
@@ -200,7 +216,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(242, 263);
+            this.ClientSize = new System.Drawing.Size(242, 282);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.AlarmTargetS_T);
@@ -237,5 +253,6 @@
         private TextBox AlarmTargetS_T;
         private Label label1;
         private Label label2;
+        private CheckBox AutoStartTimmer_Check;
     }
 }
