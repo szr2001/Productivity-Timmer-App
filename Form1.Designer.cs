@@ -31,11 +31,15 @@
             this.TimerNumbr_L = new System.Windows.Forms.Label();
             this.TimeElapsed_FlowP = new System.Windows.Forms.FlowLayoutPanel();
             this.ToggleTimmer_B = new System.Windows.Forms.Button();
-            this.AlarmTarget_T = new System.Windows.Forms.TextBox();
+            this.AlarmTargetH_T = new System.Windows.Forms.TextBox();
             this.OpenAppsAtStartup_Check = new System.Windows.Forms.CheckBox();
             this.Settings_FlowP = new System.Windows.Forms.FlowLayoutPanel();
             this.StartAlarm_Check = new System.Windows.Forms.CheckBox();
             this.AlarmTime_L = new System.Windows.Forms.Label();
+            this.AlarmTargetM_T = new System.Windows.Forms.TextBox();
+            this.AlarmTargetS_T = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.TimeElapsed_FlowP.SuspendLayout();
             this.Settings_FlowP.SuspendLayout();
             this.SuspendLayout();
@@ -77,53 +81,66 @@
             this.ToggleTimmer_B.UseVisualStyleBackColor = false;
             this.ToggleTimmer_B.Click += new System.EventHandler(this.ToggleTimmer);
             // 
-            // AlarmTarget_T
+            // AlarmTargetH_T
             // 
-            this.AlarmTarget_T.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AlarmTarget_T.Location = new System.Drawing.Point(10, 122);
-            this.AlarmTarget_T.MaxLength = 7;
-            this.AlarmTarget_T.Name = "AlarmTarget_T";
-            this.AlarmTarget_T.Size = new System.Drawing.Size(122, 25);
-            this.AlarmTarget_T.TabIndex = 4;
-            this.AlarmTarget_T.Text = "0:00:00";
-            this.AlarmTarget_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AlarmTargetH_T.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AlarmTargetH_T.Location = new System.Drawing.Point(25, 121);
+            this.AlarmTargetH_T.MaxLength = 1;
+            this.AlarmTargetH_T.Name = "AlarmTargetH_T";
+            this.AlarmTargetH_T.Size = new System.Drawing.Size(22, 25);
+            this.AlarmTargetH_T.TabIndex = 4;
+            this.AlarmTargetH_T.Text = "0";
+            this.AlarmTargetH_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AlarmTargetH_T.TextChanged += new System.EventHandler(this.UpdateTimeSettings);
             // 
             // OpenAppsAtStartup_Check
             // 
+            this.OpenAppsAtStartup_Check.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.OpenAppsAtStartup_Check.Checked = true;
+            this.OpenAppsAtStartup_Check.CheckState = System.Windows.Forms.CheckState.Checked;
             this.OpenAppsAtStartup_Check.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.OpenAppsAtStartup_Check.Location = new System.Drawing.Point(17, 3);
+            this.OpenAppsAtStartup_Check.Location = new System.Drawing.Point(1, 3);
             this.OpenAppsAtStartup_Check.Name = "OpenAppsAtStartup_Check";
+            this.OpenAppsAtStartup_Check.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.OpenAppsAtStartup_Check.Size = new System.Drawing.Size(206, 30);
             this.OpenAppsAtStartup_Check.TabIndex = 7;
             this.OpenAppsAtStartup_Check.Text = "Open Apps At Start";
             this.OpenAppsAtStartup_Check.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.OpenAppsAtStartup_Check.UseVisualStyleBackColor = true;
+            this.OpenAppsAtStartup_Check.UseVisualStyleBackColor = false;
+            this.OpenAppsAtStartup_Check.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxsesSettings);
             // 
             // Settings_FlowP
             // 
+            this.Settings_FlowP.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Settings_FlowP.Controls.Add(this.OpenAppsAtStartup_Check);
             this.Settings_FlowP.Controls.Add(this.StartAlarm_Check);
             this.Settings_FlowP.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.Settings_FlowP.Location = new System.Drawing.Point(9, 157);
+            this.Settings_FlowP.Location = new System.Drawing.Point(17, 157);
             this.Settings_FlowP.Name = "Settings_FlowP";
-            this.Settings_FlowP.Size = new System.Drawing.Size(226, 100);
+            this.Settings_FlowP.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.Settings_FlowP.Size = new System.Drawing.Size(210, 100);
             this.Settings_FlowP.TabIndex = 8;
             // 
             // StartAlarm_Check
             // 
+            this.StartAlarm_Check.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.StartAlarm_Check.Checked = true;
+            this.StartAlarm_Check.CheckState = System.Windows.Forms.CheckState.Checked;
             this.StartAlarm_Check.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.StartAlarm_Check.Location = new System.Drawing.Point(17, 39);
+            this.StartAlarm_Check.Location = new System.Drawing.Point(1, 39);
             this.StartAlarm_Check.Name = "StartAlarm_Check";
+            this.StartAlarm_Check.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.StartAlarm_Check.Size = new System.Drawing.Size(206, 30);
             this.StartAlarm_Check.TabIndex = 8;
             this.StartAlarm_Check.Text = "Start Alarm";
             this.StartAlarm_Check.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.StartAlarm_Check.UseVisualStyleBackColor = true;
+            this.StartAlarm_Check.UseVisualStyleBackColor = false;
+            this.StartAlarm_Check.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxsesSettings);
             // 
             // AlarmTime_L
             // 
             this.AlarmTime_L.AutoSize = true;
-            this.AlarmTime_L.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.AlarmTime_L.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.AlarmTime_L.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AlarmTime_L.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AlarmTime_L.Location = new System.Drawing.Point(25, 100);
@@ -133,6 +150,50 @@
             this.AlarmTime_L.Text = "Alarm Time";
             this.AlarmTime_L.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // AlarmTargetM_T
+            // 
+            this.AlarmTargetM_T.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AlarmTargetM_T.Location = new System.Drawing.Point(59, 122);
+            this.AlarmTargetM_T.MaxLength = 2;
+            this.AlarmTargetM_T.Name = "AlarmTargetM_T";
+            this.AlarmTargetM_T.Size = new System.Drawing.Size(22, 25);
+            this.AlarmTargetM_T.TabIndex = 10;
+            this.AlarmTargetM_T.Text = "00";
+            this.AlarmTargetM_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AlarmTargetM_T.TextChanged += new System.EventHandler(this.UpdateTimeSettings);
+            // 
+            // AlarmTargetS_T
+            // 
+            this.AlarmTargetS_T.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AlarmTargetS_T.Location = new System.Drawing.Point(95, 122);
+            this.AlarmTargetS_T.MaxLength = 2;
+            this.AlarmTargetS_T.Name = "AlarmTargetS_T";
+            this.AlarmTargetS_T.Size = new System.Drawing.Size(22, 25);
+            this.AlarmTargetS_T.TabIndex = 11;
+            this.AlarmTargetS_T.Text = "00";
+            this.AlarmTargetS_T.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AlarmTargetS_T.TextChanged += new System.EventHandler(this.UpdateTimeSettings);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(45, 125);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(13, 19);
+            this.label1.TabIndex = 12;
+            this.label1.Text = ":";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(83, 126);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(13, 19);
+            this.label2.TabIndex = 13;
+            this.label2.Text = ":";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -140,9 +201,13 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(242, 263);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.AlarmTargetS_T);
+            this.Controls.Add(this.AlarmTargetM_T);
             this.Controls.Add(this.AlarmTime_L);
             this.Controls.Add(this.Settings_FlowP);
-            this.Controls.Add(this.AlarmTarget_T);
+            this.Controls.Add(this.AlarmTargetH_T);
             this.Controls.Add(this.ToggleTimmer_B);
             this.Controls.Add(this.TimeElapsed_FlowP);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -163,10 +228,14 @@
         private Label TimerNumbr_L;
         private FlowLayoutPanel TimeElapsed_FlowP;
         private Button ToggleTimmer_B;
-        private TextBox AlarmTarget_T;
+        private TextBox AlarmTargetH_T;
         private CheckBox OpenAppsAtStartup_Check;
         private FlowLayoutPanel Settings_FlowP;
         private CheckBox StartAlarm_Check;
         private Label AlarmTime_L;
+        private TextBox AlarmTargetM_T;
+        private TextBox AlarmTargetS_T;
+        private Label label1;
+        private Label label2;
     }
 }
