@@ -25,15 +25,15 @@ namespace TimmerApp
         public Form1()
         {
             InitializeComponent();
-            //temp
-            AllocConsole();
+            //Call Console
+            //AllocConsole();
 
             GetSettings();
-            StartShorcuts();
             ForceStart();
+            StartShorcuts();
         }
 
-        //temp
+        //Console Dll Inport
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
@@ -203,15 +203,18 @@ namespace TimmerApp
         }
         private void StartShorcuts()
         {
-            ShortcutsDetected = Directory.GetFiles(AppsToStart);
-            foreach(string directory in ShortcutsDetected)
+            if (IsOppeningAppsAtStatrup)
             {
-                var p = new Process();
-                p.StartInfo = new ProcessStartInfo(directory)
+                ShortcutsDetected = Directory.GetFiles(AppsToStart);
+                foreach(string directory in ShortcutsDetected)
                 {
-                    UseShellExecute = true
-                };
-                p.Start();
+                    var p = new Process();
+                    p.StartInfo = new ProcessStartInfo(directory)
+                    {
+                        UseShellExecute = true
+                    };
+                    p.Start();
+                }
             }
         }
     }

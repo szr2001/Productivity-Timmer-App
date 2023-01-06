@@ -49,7 +49,7 @@
             // 
             this.TimerNumbr_L.AutoSize = true;
             this.TimerNumbr_L.Font = new System.Drawing.Font("Segoe UI", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TimerNumbr_L.Location = new System.Drawing.Point(15, 10);
+            this.TimerNumbr_L.Location = new System.Drawing.Point(10, 0);
             this.TimerNumbr_L.Margin = new System.Windows.Forms.Padding(0);
             this.TimerNumbr_L.Name = "TimerNumbr_L";
             this.TimerNumbr_L.Size = new System.Drawing.Size(197, 62);
@@ -66,15 +66,15 @@
             this.TimeElapsed_FlowP.Controls.Add(this.TimerNumbr_L);
             this.TimeElapsed_FlowP.Location = new System.Drawing.Point(12, 12);
             this.TimeElapsed_FlowP.Name = "TimeElapsed_FlowP";
-            this.TimeElapsed_FlowP.Padding = new System.Windows.Forms.Padding(15, 10, 0, 0);
-            this.TimeElapsed_FlowP.Size = new System.Drawing.Size(218, 97);
+            this.TimeElapsed_FlowP.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.TimeElapsed_FlowP.Size = new System.Drawing.Size(218, 64);
             this.TimeElapsed_FlowP.TabIndex = 2;
             // 
             // ToggleTimmer_B
             // 
             this.ToggleTimmer_B.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(188)))), ((int)(((byte)(216)))));
             this.ToggleTimmer_B.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ToggleTimmer_B.Location = new System.Drawing.Point(138, 96);
+            this.ToggleTimmer_B.Location = new System.Drawing.Point(132, 82);
             this.ToggleTimmer_B.Name = "ToggleTimmer_B";
             this.ToggleTimmer_B.Size = new System.Drawing.Size(98, 55);
             this.ToggleTimmer_B.TabIndex = 3;
@@ -85,7 +85,7 @@
             // AlarmTargetH_T
             // 
             this.AlarmTargetH_T.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AlarmTargetH_T.Location = new System.Drawing.Point(25, 121);
+            this.AlarmTargetH_T.Location = new System.Drawing.Point(25, 107);
             this.AlarmTargetH_T.MaxLength = 2;
             this.AlarmTargetH_T.Name = "AlarmTargetH_T";
             this.AlarmTargetH_T.Size = new System.Drawing.Size(22, 25);
@@ -117,10 +117,10 @@
             this.Settings_FlowP.Controls.Add(this.StartAlarm_Check);
             this.Settings_FlowP.Controls.Add(this.AutoStartTimmer_Check);
             this.Settings_FlowP.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.Settings_FlowP.Location = new System.Drawing.Point(17, 157);
+            this.Settings_FlowP.Location = new System.Drawing.Point(17, 140);
             this.Settings_FlowP.Name = "Settings_FlowP";
             this.Settings_FlowP.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.Settings_FlowP.Size = new System.Drawing.Size(210, 113);
+            this.Settings_FlowP.Size = new System.Drawing.Size(210, 130);
             this.Settings_FlowP.TabIndex = 8;
             // 
             // StartAlarm_Check
@@ -159,7 +159,7 @@
             this.AlarmTime_L.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.AlarmTime_L.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AlarmTime_L.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AlarmTime_L.Location = new System.Drawing.Point(25, 100);
+            this.AlarmTime_L.Location = new System.Drawing.Point(25, 85);
             this.AlarmTime_L.Name = "AlarmTime_L";
             this.AlarmTime_L.Size = new System.Drawing.Size(92, 23);
             this.AlarmTime_L.TabIndex = 9;
@@ -169,7 +169,7 @@
             // AlarmTargetM_T
             // 
             this.AlarmTargetM_T.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AlarmTargetM_T.Location = new System.Drawing.Point(59, 122);
+            this.AlarmTargetM_T.Location = new System.Drawing.Point(59, 107);
             this.AlarmTargetM_T.MaxLength = 2;
             this.AlarmTargetM_T.Name = "AlarmTargetM_T";
             this.AlarmTargetM_T.Size = new System.Drawing.Size(22, 25);
@@ -181,7 +181,7 @@
             // AlarmTargetS_T
             // 
             this.AlarmTargetS_T.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AlarmTargetS_T.Location = new System.Drawing.Point(95, 122);
+            this.AlarmTargetS_T.Location = new System.Drawing.Point(95, 107);
             this.AlarmTargetS_T.MaxLength = 2;
             this.AlarmTargetS_T.Name = "AlarmTargetS_T";
             this.AlarmTargetS_T.Size = new System.Drawing.Size(22, 25);
@@ -192,23 +192,27 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(45, 125);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(48, 113);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(13, 19);
+            this.label1.Size = new System.Drawing.Size(10, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = ":";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(83, 126);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(84, 113);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(13, 19);
+            this.label2.Size = new System.Drawing.Size(10, 13);
             this.label2.TabIndex = 13;
             this.label2.Text = ":";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form1
             // 
