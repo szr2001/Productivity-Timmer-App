@@ -14,14 +14,15 @@ namespace TimmerApp
         private string[]? ShortcutsDetected;
         private TimeSpan MaxElapsedTime = new(99, 59, 59);
         private TimeSpan ElapsedTime = new(00, 00, 00);
-        private bool IsLoading = false;
 
         //---------------------Settings-----------------//
 
         private TimeSpan TargetTime = new(00, 00, 00);
+        private TimeSpan LastTimerTime = new(00, 00, 00);
+        private bool IsAutoStartingTimmer = false;
         private bool IsOppeningAppsAtStatrup = true;
         private bool IsAlarmActive = true;
-        private bool IsAutoStartingTimmer = false;
+        private bool IsResumingTime = true;
         public Form1()
         {
             InitializeComponent();
@@ -94,34 +95,57 @@ namespace TimmerApp
             }
             if (File.Exists(AppLocationSettingsFile))
             {
-                IsLoading = true;
-                using (StreamReader Str = new(AppLocationSettingsFile))
+                try
                 {
-                    List<string> Settings = new();
-                    Settings.Add(Str.ReadLine());
-                    Settings.Add(Str.ReadLine());
-                    Settings.Add(Str.ReadLine());
-                    Settings.Add(Str.ReadLine());
-                    TargetTime =  new TimeSpan
-                        (
-                            int.Parse(Settings[0].Split('=')[1].Split(':')[0]),
-                            int.Parse(Settings[0].Split('=')[1].Split(':')[1]),
-                            int.Parse(Settings[0].Split('=')[1].Split(':')[2])
-                        );
-                    AlarmTargetH_T.Text = String.Format("{0:hh}", TargetTime);
-                    AlarmTargetM_T.Text = String.Format("{0:mm}", TargetTime);
-                    AlarmTargetS_T.Text = String.Format("{0:ss}", TargetTime);
+                    using (StreamReader Str = new(AppLocationSettingsFile))
+                    {
+                        List<string> Settings = new();
+                        Settings.Add(Str.ReadLine());
+                        Settings.Add(Str.ReadLine());
+                        Settings.Add(Str.ReadLine());
+                        Settings.Add(Str.ReadLine());
+                        Settings.Add(Str.ReadLine());
+                        Settings.Add(Str.ReadLine());
 
-                    IsOppeningAppsAtStatrup = Convert.ToBoolean(Settings[1].Split('=')[1]);
-                    OpenAppsAtStartup_Check.Checked = IsOppeningAppsAtStatrup;
+                        TargetTime = new TimeSpan
+                            (
+                                int.Parse(Settings[0].Split('=')[1].Split(':')[0]),
+                                int.Parse(Settings[0].Split('=')[1].Split(':')[1]),
+                                int.Parse(Settings[0].Split('=')[1].Split(':')[2])
+                            );
+                        AlarmTargetH_T.Text = String.Format("{0:hh}", TargetTime);
+                        AlarmTargetM_T.Text = String.Format("{0:mm}", TargetTime);
+                        AlarmTargetS_T.Text = String.Format("{0:ss}", TargetTime);
 
-                    IsAlarmActive = Convert.ToBoolean(Settings[2].Split('=')[1]);
-                    StartAlarm_Check.Checked = IsAlarmActive;
+                        if (IsResumingTime)
+                        {
+                            ElapsedTime = new TimeSpan
+                            (
+                                int.Parse(Settings[1].Split('=')[1].Split(':')[0]),
+                                int.Parse(Settings[1].Split('=')[1].Split(':')[1]),
+                                int.Parse(Settings[1].Split('=')[1].Split(':')[2])
+                            );
+                            TimerNumbr_L.Text = $"{String.Format("{0:hh}", ElapsedTime)}:{String.Format("{0:mm}", ElapsedTime)}:{String.Format("{0:ss}", ElapsedTime)}";
+                        }
 
-                    IsAutoStartingTimmer = Convert.ToBoolean(Settings[3].Split('=')[1]);
-                    AutoStartTimmer_Check.Checked = IsAutoStartingTimmer;
+                        IsOppeningAppsAtStatrup = Convert.ToBoolean(Settings[2].Split('=')[1]);
+                        OpenAppsAtStartup_Check.Checked = IsOppeningAppsAtStatrup;
+
+                        IsAlarmActive = Convert.ToBoolean(Settings[3].Split('=')[1]);
+                        StartAlarm_Check.Checked = IsAlarmActive;
+
+                        IsAutoStartingTimmer = Convert.ToBoolean(Settings[4].Split('=')[1]);
+                        AutoStartTimmer_Check.Checked = IsAutoStartingTimmer;
+
+                        IsResumingTime = Convert.ToBoolean(Settings[5].Split('=')[1]);
+                        ResumeTime_Check.Checked = IsResumingTime;
+                    }
                 }
-                IsLoading = false;
+                catch
+                {
+                    RecreateSettingsFile();
+                }
+                
             }
             else
             {
@@ -130,10 +154,6 @@ namespace TimmerApp
         }
         private void UpdateTimeSettings(object sender, EventArgs e) // problem
         {
-            if (IsLoading)
-            {
-                return;
-            }
             if(AlarmTargetH_T.Text == "")
             {
                 AlarmTargetH_T.Text = "00";
@@ -162,26 +182,24 @@ namespace TimmerApp
             }
             TimeSpan NewTimespan = new(int.Parse(AlarmTargetH_T.Text), int.Parse(AlarmTargetM_T.Text), int.Parse(AlarmTargetS_T.Text));
             TargetTime = NewTimespan;
-            RecreateSettingsFile();
         }
         private void UpdateCheckBoxsesSettings(object sender, EventArgs e)
         {
-            if (!IsLoading)
-            {
-                IsAlarmActive = StartAlarm_Check.Checked;
-                IsOppeningAppsAtStatrup = OpenAppsAtStartup_Check.Checked;
-                IsAutoStartingTimmer = AutoStartTimmer_Check.Checked;
-                RecreateSettingsFile();
-            }
+            IsAlarmActive = StartAlarm_Check.Checked;
+            IsOppeningAppsAtStatrup = OpenAppsAtStartup_Check.Checked;
+            IsAutoStartingTimmer = AutoStartTimmer_Check.Checked;
+            IsResumingTime = ResumeTime_Check.Checked;
         }
         private void RecreateSettingsFile()
         {
             using (StreamWriter Stw = new(AppLocationSettingsFile))
             {
                 Stw.WriteLine($"Target Time = {string.Format("{0:hh\\:mm\\:ss}", TargetTime)}");
+                Stw.WriteLine($"Last Time = {string.Format("{0:hh\\:mm\\:ss}", LastTimerTime)}");
                 Stw.WriteLine($"Open apps at startup = {IsOppeningAppsAtStatrup}");
                 Stw.WriteLine($"Start alarm when on target time = {IsAlarmActive}");
                 Stw.WriteLine($"Start timmer on Startup = {IsAutoStartingTimmer}");
+                Stw.WriteLine($"Resume timmer on startup = {IsResumingTime}");
             }
         }
         private void ForceStart()
@@ -216,6 +234,18 @@ namespace TimmerApp
                     p.Start();
                 }
             }
+        }
+        private void CloseForm(object sender, FormClosingEventArgs e)
+        {
+            if (ElapsedTime < TargetTime && IsResumingTime)
+            {
+                LastTimerTime = ElapsedTime;
+            }
+            else
+            {
+                LastTimerTime = new TimeSpan(00, 00, 00);
+            }
+            RecreateSettingsFile();
         }
     }
 }

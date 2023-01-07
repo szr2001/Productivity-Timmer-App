@@ -34,8 +34,9 @@
             this.AlarmTargetH_T = new System.Windows.Forms.TextBox();
             this.OpenAppsAtStartup_Check = new System.Windows.Forms.CheckBox();
             this.Settings_FlowP = new System.Windows.Forms.FlowLayoutPanel();
-            this.StartAlarm_Check = new System.Windows.Forms.CheckBox();
             this.AutoStartTimmer_Check = new System.Windows.Forms.CheckBox();
+            this.StartAlarm_Check = new System.Windows.Forms.CheckBox();
+            this.ResumeTime_Check = new System.Windows.Forms.CheckBox();
             this.AlarmTime_L = new System.Windows.Forms.Label();
             this.AlarmTargetM_T = new System.Windows.Forms.TextBox();
             this.AlarmTargetS_T = new System.Windows.Forms.TextBox();
@@ -99,11 +100,11 @@
             this.OpenAppsAtStartup_Check.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.OpenAppsAtStartup_Check.Checked = true;
             this.OpenAppsAtStartup_Check.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.OpenAppsAtStartup_Check.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.OpenAppsAtStartup_Check.Location = new System.Drawing.Point(1, 3);
+            this.OpenAppsAtStartup_Check.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.OpenAppsAtStartup_Check.Location = new System.Drawing.Point(6, 37);
             this.OpenAppsAtStartup_Check.Name = "OpenAppsAtStartup_Check";
             this.OpenAppsAtStartup_Check.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.OpenAppsAtStartup_Check.Size = new System.Drawing.Size(206, 30);
+            this.OpenAppsAtStartup_Check.Size = new System.Drawing.Size(199, 25);
             this.OpenAppsAtStartup_Check.TabIndex = 7;
             this.OpenAppsAtStartup_Check.Text = "Open Apps At Start";
             this.OpenAppsAtStartup_Check.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -113,45 +114,62 @@
             // Settings_FlowP
             // 
             this.Settings_FlowP.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Settings_FlowP.Controls.Add(this.AutoStartTimmer_Check);
             this.Settings_FlowP.Controls.Add(this.OpenAppsAtStartup_Check);
             this.Settings_FlowP.Controls.Add(this.StartAlarm_Check);
-            this.Settings_FlowP.Controls.Add(this.AutoStartTimmer_Check);
+            this.Settings_FlowP.Controls.Add(this.ResumeTime_Check);
             this.Settings_FlowP.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.Settings_FlowP.Location = new System.Drawing.Point(17, 140);
             this.Settings_FlowP.Name = "Settings_FlowP";
-            this.Settings_FlowP.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.Settings_FlowP.Padding = new System.Windows.Forms.Padding(0, 3, 2, 0);
             this.Settings_FlowP.Size = new System.Drawing.Size(210, 130);
             this.Settings_FlowP.TabIndex = 8;
+            // 
+            // AutoStartTimmer_Check
+            // 
+            this.AutoStartTimmer_Check.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.AutoStartTimmer_Check.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AutoStartTimmer_Check.Location = new System.Drawing.Point(6, 6);
+            this.AutoStartTimmer_Check.Name = "AutoStartTimmer_Check";
+            this.AutoStartTimmer_Check.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.AutoStartTimmer_Check.Size = new System.Drawing.Size(199, 25);
+            this.AutoStartTimmer_Check.TabIndex = 9;
+            this.AutoStartTimmer_Check.Text = "Auto Start Timmer";
+            this.AutoStartTimmer_Check.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AutoStartTimmer_Check.UseVisualStyleBackColor = false;
+            this.AutoStartTimmer_Check.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxsesSettings);
             // 
             // StartAlarm_Check
             // 
             this.StartAlarm_Check.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.StartAlarm_Check.Checked = true;
             this.StartAlarm_Check.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.StartAlarm_Check.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.StartAlarm_Check.Location = new System.Drawing.Point(1, 39);
+            this.StartAlarm_Check.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.StartAlarm_Check.Location = new System.Drawing.Point(6, 68);
             this.StartAlarm_Check.Name = "StartAlarm_Check";
             this.StartAlarm_Check.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.StartAlarm_Check.Size = new System.Drawing.Size(206, 30);
+            this.StartAlarm_Check.Size = new System.Drawing.Size(199, 25);
             this.StartAlarm_Check.TabIndex = 8;
             this.StartAlarm_Check.Text = "Use Alarm Sound";
             this.StartAlarm_Check.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.StartAlarm_Check.UseVisualStyleBackColor = false;
             this.StartAlarm_Check.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxsesSettings);
             // 
-            // AutoStartTimmer_Check
+            // ResumeTime_Check
             // 
-            this.AutoStartTimmer_Check.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.AutoStartTimmer_Check.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AutoStartTimmer_Check.Location = new System.Drawing.Point(1, 75);
-            this.AutoStartTimmer_Check.Name = "AutoStartTimmer_Check";
-            this.AutoStartTimmer_Check.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.AutoStartTimmer_Check.Size = new System.Drawing.Size(206, 30);
-            this.AutoStartTimmer_Check.TabIndex = 9;
-            this.AutoStartTimmer_Check.Text = "Auto Start Timmer";
-            this.AutoStartTimmer_Check.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.AutoStartTimmer_Check.UseVisualStyleBackColor = false;
-            this.AutoStartTimmer_Check.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxsesSettings);
+            this.ResumeTime_Check.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ResumeTime_Check.Checked = true;
+            this.ResumeTime_Check.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ResumeTime_Check.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ResumeTime_Check.Location = new System.Drawing.Point(6, 99);
+            this.ResumeTime_Check.Name = "ResumeTime_Check";
+            this.ResumeTime_Check.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.ResumeTime_Check.Size = new System.Drawing.Size(199, 25);
+            this.ResumeTime_Check.TabIndex = 10;
+            this.ResumeTime_Check.Text = "Resume timer on startup";
+            this.ResumeTime_Check.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ResumeTime_Check.UseVisualStyleBackColor = false;
+            this.ResumeTime_Check.CheckedChanged += new System.EventHandler(this.UpdateCheckBoxsesSettings);
             // 
             // AlarmTime_L
             // 
@@ -235,6 +253,7 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "TimmerApp";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CloseForm);
             this.TimeElapsed_FlowP.ResumeLayout(false);
             this.TimeElapsed_FlowP.PerformLayout();
             this.Settings_FlowP.ResumeLayout(false);
@@ -251,12 +270,13 @@
         private TextBox AlarmTargetH_T;
         private CheckBox OpenAppsAtStartup_Check;
         private FlowLayoutPanel Settings_FlowP;
-        private CheckBox StartAlarm_Check;
         private Label AlarmTime_L;
         private TextBox AlarmTargetM_T;
         private TextBox AlarmTargetS_T;
         private Label label1;
         private Label label2;
         private CheckBox AutoStartTimmer_Check;
+        private CheckBox StartAlarm_Check;
+        private CheckBox ResumeTime_Check;
     }
 }
